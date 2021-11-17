@@ -22,6 +22,8 @@ int main(){
     arbol->imprimirInOrder();
     arbol->eliminarNodo(17);
 
+    arbol->imprimirAntecesor(10);
+
     //NUEVO ARBOL
     cout<<"***NUEVO ARBOL***"<<endl;
     BST<int> * arbol2=new BST<int>();

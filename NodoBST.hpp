@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 
+
 using namespace std;
 
 template <typename T>
@@ -59,18 +60,18 @@ class NodoBST {
         }
         static void recorridoLevelByLevel(NodoBST<T> * actual){
             if(actual) {
-                queue<NodoBST<T>*> q;
-                q.push(actual);
-                while(!q.empty()) {
-                    NodoBST<T> * actual = q.front();
+                queue<NodoBST<T>*> p;
+                p.push(actual);
+                while(!p.empty()) {
+                    NodoBST<T> * actual = p.front();
                     cout<<actual->getDato()<<" ";
                     if(actual->getIzq()!=NULL) {
-                        q.push(actual->getIzq());
+                        p.push(actual->getIzq());
                     }
                     if(actual->getDer()!=NULL) {
-                        q.push(actual->getDer());
+                        p.push(actual->getDer());
                     }
-                    q.pop();
+                    p.pop();
                 }
             }
             }
@@ -88,33 +89,13 @@ class NodoBST {
         }
         static int encontrarAltura(NodoBST<T> * actual){
             if (actual) {
+                //ragresar numero maximo de niveles +1 con ayuda de la funcion max
                 return max(encontrarAltura(actual->getDer()),encontrarAltura(actual->getIzq()))+1;
             }
             return 0;
             
         }
-        static bool antecesor(NodoBST<T> * actual){
-             if (actual){
-
-                bool left = antecesor(actual->getIzq());
-                // search node in the right subtree
-                bool right = false;
-                if (!left) {
-                    right = antecesor(actual->getDer());
-                }
-            
-                // if the given node is found in either left or right subtree,
-                // the current node is an ancestor of a given node
-                if (left || right) {
-                    cout << actual->getDato() << " ";
-                }
-            
-                // return true if a node is found
-                return left || right;
-            }
-            return false;
-
-        }
+        
         
 
 

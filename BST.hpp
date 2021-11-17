@@ -167,34 +167,19 @@ class BST{
         }
 
         void imprimirAntecesor(T dato){
-            NodoBST<T> * eliminar = this->buscarNodo(dato);
+            NodoBST<T> * antecesor = this->buscarNodo(dato);
+            NodoBST<T> * padre = nullptr;
+            if (dato){
+                padre=antecesor->getPadre();
+                if(!padre){
+                    cout<<"El antecesor de "<<dato<<" es: mull porque "<<dato<<" es raiz"<<endl;
+                }
+            }
             cout<<"El antecesor de "<<dato<<" es: "<<endl;
 
             
         }
 
-        static bool antecesor(NodoBST<T> * actual){
-             if (actual){
-
-                bool left = antecesor(actual->getIzq());
-                // search node in the right subtree
-                bool right = false;
-                if (!left) {
-                    right = antecesor(actual->getDer());
-                }
-            
-                // if the given node is found in either left or right subtree,
-                // the current node is an ancestor of a given node
-                if (left || right) {
-                    cout << actual->getDato() << " ";
-                }
-            
-                // return true if a node is found
-                return left || right;
-            }
-            return false;
-
-
-
+        
 
 };
