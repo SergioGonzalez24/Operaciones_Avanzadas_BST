@@ -45,6 +45,7 @@ class BST{
             }
             return; //opcional
         }
+
         NodoBST<T> * buscarNodo(T dato){
             //Primer paso crear el apuntador a nodo raiz
             NodoBST<T> * actual = this->raiz;
@@ -59,13 +60,42 @@ class BST{
         }
 
         void imprimirPreOrder(){
+            cout<<"Pre Order: ";
             NodoBST<T>::recorridoPreOrder(this->raiz);
             cout<<endl;
         }
 
+        void imprimirPostOrder(){
+            cout<<"Post Order: ";
+            NodoBST<T>::recorridoPostOrder(this->raiz);
+            cout<<endl;
+        }
+
         void imprimirInOrder(){
+            cout<<"In Order: ";
             NodoBST<T>::recorridoInOrder(this->raiz);
             cout<<endl;
+        }
+        
+        void imprimirLevelByLevel(){
+            cout<<"Level By Level: ";
+            NodoBST<T>::recorridoLevelByLevel(this->raiz);
+            cout<<endl;
+        }
+
+        void visit(int seleccion) {
+            if (seleccion==1) {
+                imprimirPreOrder();
+            }
+            else if (seleccion==2) {
+                imprimirPostOrder();
+            }
+            else if (seleccion==3) {
+                imprimirLevelByLevel();
+            }else {
+                cout<<"VALOR NO VALIDO"<<endl;
+
+            }
         }
 
         void eliminarNodo(T dato){
@@ -128,5 +158,43 @@ class BST{
                 this->numNodos--;
             }else
                 cout<<"Valor inexistente en el árbol"<<endl;
-        }        
+        }
+
+        void height(){
+            cout<<"la altura es de: ";
+            cout<<NodoBST<T>::encontrarAltura(this->raiz);
+            cout<<endl;
+        }
+
+        void imprimirAntecesor(T dato){
+            NodoBST<T> * eliminar = this->buscarNodo(dato);
+            cout<<"El antecesor de "<<dato<<" es: "<<endl;
+
+            
+        }
+
+        static bool antecesor(NodoBST<T> * actual){
+             if (actual){
+
+                bool left = antecesor(actual->getIzq());
+                // search node in the right subtree
+                bool right = false;
+                if (!left) {
+                    right = antecesor(actual->getDer());
+                }
+            
+                // if the given node is found in either left or right subtree,
+                // the current node is an ancestor of a given node
+                if (left || right) {
+                    cout << actual->getDato() << " ";
+                }
+            
+                // return true if a node is found
+                return left || right;
+            }
+            return false;
+
+
+
+
 };
