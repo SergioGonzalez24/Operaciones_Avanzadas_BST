@@ -23,6 +23,7 @@ class NodoBST {
         void setIzq(NodoBST<T> * izq){this->izq=izq;}
         void setDer(NodoBST<T> * der){this->der=der;}
         void setPadre(NodoBST<T> * padre){this->padre=padre;}
+        
 
         //Constructores
         NodoBST(NodoBST<T> * padre, T dato){
@@ -95,10 +96,6 @@ class NodoBST {
             return 0;
             
         }
+
         
-        
-
-
-
-
 };

@@ -22,7 +22,7 @@ int main(){
     arbol->imprimirInOrder();
     arbol->eliminarNodo(17);
 
-    arbol->imprimirAntecesor(10);
+    //arbol->imprimirAntecesor(10);
 
     //NUEVO ARBOL
     cout<<"***NUEVO ARBOL***"<<endl;
@@ -48,6 +48,8 @@ int main(){
     //Antecesor
     arbol2->imprimirAntecesor(8);
 
+    //NodeLevel
+    //arbol2->whatLevel(8);
 
     return 0;
 }

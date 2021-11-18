@@ -165,21 +165,33 @@ class BST{
             cout<<NodoBST<T>::encontrarAltura(this->raiz);
             cout<<endl;
         }
-
         void imprimirAntecesor(T dato){
-            NodoBST<T> * antecesor = this->buscarNodo(dato);
-            NodoBST<T> * padre = nullptr;
-            if (dato){
-                padre=antecesor->getPadre();
-                if(!padre){
-                    cout<<"El antecesor de "<<dato<<" es: mull porque "<<dato<<" es raiz"<<endl;
+            cout<<"El predecesor de "<<dato<<" es :"<<endl;
+            NodoBST<T> * actual = this->raiz;
+            if(!actual){
+                cout<<nullptr;
+            }else{
+                if(!actual->getDer()&&!actual->getIzq()){
+                    cout<<actual->getPadre();
                 }
-            }
-            cout<<"El antecesor de "<<dato<<" es: "<<endl;
-
-            
+                else if(actual->getIzq()){
+                    actual=actual->getIzq();
+                    while(actual->getDer()){
+                        actual=actual->getDer();
+                    }    
+                    cout<<actual->getDato();
+                }else{
+                    actual=actual->getDer();
+                    while(actual->getIzq())
+                        actual=actual->getIzq();
+                    cout<<actual->getDato();
+                }
+                else if (actual->getDato()>dato){
+                    antecesor(dato);
+                }else{
+                    antecesor(dato);
+                }
+            } 
+            cout<<nullptr; 
         }
-
-        
-
 };
