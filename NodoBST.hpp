@@ -94,8 +94,19 @@ class NodoBST {
                 return max(encontrarAltura(actual->getDer()),encontrarAltura(actual->getIzq()))+1;
             }
             return 0;
-            
         }
-
-        
+        static int Nodelevel(NodoBST<T> * actual, int dato, int level){
+            if (!actual){
+                return -1;
+            }
+            if (actual==nullptr){
+                return 0;
+            }
+            if (actual->getDato()==dato){
+                return level;
+            }
+            int nivel=Nodelevel(actual->getIzq(),dato,level+1);
+            return nivel;
+        }
+  
 };

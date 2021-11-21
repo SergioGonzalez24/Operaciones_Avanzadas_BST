@@ -49,7 +49,7 @@ int main(){
     arbol2->imprimirAntecesor(8);
 
     //NodeLevel
-    //arbol2->whatLevel(8);
+    arbol2->getNodeLevel(8);
 
     return 0;
 }
